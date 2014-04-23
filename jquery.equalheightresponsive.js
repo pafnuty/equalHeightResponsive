@@ -8,6 +8,7 @@
  * Плагин основан на коде из поста: http://css-tricks.com/equal-height-blocks-in-rows/
  *
  * Использование:
+ * 
  * HTML: 
  * <div class="container">
  *     <div class="element"></div>

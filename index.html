@@ -160,8 +160,8 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script>
     jQuery(document).ready(function ($) {
-      /*! jQuery.equalHeightResponsive | v.1.0 | 23.04.2014 | http://git.io/OwM7Ow */
-      !function(){}(jQuery),function(t){t.fn.equalheightRun=function(){var e,n=0,r=0,h=new Array;return t.each(this,function(){if(e=t(this),t(e).height("auto"),topPostion=e.offset().top,r!=topPostion){for(currentEl=0;currentEl<h.length;currentEl++)h[currentEl].height(n);h.length=0,r=topPostion,n=e.height(),h.push(e)}else h.push(e),n=n<e.height()?e.height():n;for(currentEl=0;currentEl<h.length;currentEl++)h[currentEl].height(n)}),this},t.fn.equalHeightResponsive=function(){function e(){n.equalheightRun()}var n=this;return t(window).on("load resize",n,e),this}}(jQuery);
+      /*! jQuery.equalHeightResponsive | v.1.1 | 28.04.2014 | http://git.io/OwM7Ow */
+      !function(a){a.fn.equalheightRun=function(){var e,b=0,c=0,d=new Array;return a.each(this,function(){if(e=a(this),a(e).height("auto"),topPostion=e.offset().top,c!=topPostion){for(currentEl=0;currentEl<d.length;currentEl++)d[currentEl].height(b);d.length=0,c=topPostion,b=e.height(),d.push(e)}else d.push(e),b=b<e.height()?e.height():b;for(currentEl=0;currentEl<d.length;currentEl++)d[currentEl].height(b)}),this},a.fn.equalHeightResponsive=function(){function c(){b.equalheightRun()}var b=this;return a(window).on("load resize equal-refresh",b,c),this}}(jQuery);
 
       $('.element').equalHeightResponsive();
     });

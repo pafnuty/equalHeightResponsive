@@ -1,9 +1,12 @@
 /**
  * Плагин     : jQuery.equalHeightResponsive
- * Версия     : 1.0 (23.04.2014)
+ * Версия     : 1.1 (28.04.2014)
  * Автор      : ПафНутиЙ 
  * Twitter    : @pafnuty_name
- * Назначение : Автоматическое выравнивание высоты блоков (в каждом ряду своя высота) для адаптивных сайтов.
+ * Назначение : Автоматическое выравнивание высоты блоков (в каждом ряду своя высота) для адаптивных сайтов. Плагин срабатывает при событиях window:
+ * load
+ * resize
+ * equal-refresh
  *
  * Плагин основан на коде из поста: http://css-tricks.com/equal-height-blocks-in-rows/
  *
@@ -19,6 +22,9 @@
  * jQuery(document).ready(function($) {
  *     $('.element').equalHeightResponsive();
  * });
+ *
+ * Для повторной инициализации делаем так:
+ * $('.element').trigger('equal-refresh');
  * 
  */
 
@@ -71,7 +77,8 @@
 		function equal() {
 			_this.equalheightRun();
 		}
-		$(window).on('load resize', _this, equal);
+		$(window).on('load resize equal-refresh', _this, equal);
+
 		return this;
 	}
 

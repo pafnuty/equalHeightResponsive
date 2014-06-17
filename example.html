@@ -146,7 +146,7 @@
 				<p>От всех, что деревни рыбного большой пор великий правилами наш! За, текста, инициал буквоград он напоивший правилами залетают ручеек составитель диких наш назад безорфографичный над маленькая букв текстами дорогу по всей! Прямо?</p>
 			</div>
 		</div>
-	</section> 	
+	</section>
 	<div>
 		<hr>
 		Информация об авторе: <br>
@@ -160,8 +160,8 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script>
 		jQuery(document).ready(function ($) {
-			/*! jQuery.equalHeightResponsive | v.1.1 | 28.04.2014 | http://git.io/OwM7Ow */
-			!function(a){a.fn.equalheightRun=function(){var e,b=0,c=0,d=new Array;return a.each(this,function(){if(e=a(this),a(e).height("auto"),topPostion=e.offset().top,c!=topPostion){for(currentEl=0;currentEl<d.length;currentEl++)d[currentEl].height(b);d.length=0,c=topPostion,b=e.height(),d.push(e)}else d.push(e),b=b<e.height()?e.height():b;for(currentEl=0;currentEl<d.length;currentEl++)d[currentEl].height(b)}),this},a.fn.equalHeightResponsive=function(){function c(){b.equalheightRun()}var b=this;return a(window).on("load resize equal-refresh",b,c),this}}(jQuery);
+			/*! jQuery.equalHeightResponsive | v.1.2 | 17.06.2014 | http://git.io/OwM7Ow */
+			!function(a,b){var h,e=0,f=0,g=new Array,j={setLineHeight:!1},k={init:function(c){var d=a.extend({},j,c),e=this,f=function(){k.run(e,d)};return a(b).on("load.equalHeightResponsive resize.equalHeightResponsive equal-refresh.equalHeightResponsive",e,f),this},run:function(b,c){return a.each(b,function(){if(h=a(this),a(h).height("auto"),topPostion=h.offset().top,f!=topPostion){for(currentEl=0;currentEl<g.length;currentEl++)g[currentEl].height(e);g.length=0,f=topPostion,e=h.height(),g.push(h)}else g.push(h),e=e<h.height()?h.height():e;for(currentEl=0;currentEl<g.length;currentEl++)g[currentEl].height(e),c.setLineHeight&&g[currentEl].css({"line-height":e-4+"px"})}),this},refresh:function(){return a(b).trigger("equal-refresh.equalHeightResponsive"),this}};a.fn.equalHeightResponsive=function(b){return k[b]?k[b].apply(this,Array.prototype.slice.call(arguments,1)):"object"!=typeof b&&b?(a.error("\u041c\u0435\u0442\u043e\u0434 \u0441 \u0438\u043c\u0435\u043d\u0435\u043c "+b+" \u043d\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u0434\u043b\u044f jQuery.equalHeightResponsive"),void 0):k.init.apply(this,arguments)}}(jQuery,window,document);
 
 			$('.element').equalHeightResponsive();
 		});

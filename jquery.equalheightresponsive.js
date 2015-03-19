@@ -1,6 +1,6 @@
 /**
  * Плагин     : jQuery.equalHeightResponsive
- * Версия     : 1.2 (17.06.2014)
+ * Версия     : 1.3 (19.03.2015)
  * Репозиторий: http://git.io/OwM7Ow
  * Автор      : ПафНутиЙ
  * Twitter    : @pafnuty_name
@@ -69,28 +69,29 @@
 					$el = $(this);
 					$($el).height('auto')
 					topPostion = $el.offset().top;
-
-					if (currentRowStart != topPostion) {
+					if ($el.is(':visible')) {
+						if (currentRowStart != topPostion) {
+							for (currentEl = 0; currentEl < rowEls.length; currentEl++) {
+								rowEls[currentEl].height(maxHeight);
+							}
+							rowEls.length = 0;
+							currentRowStart = topPostion;
+							maxHeight = $el.height();
+							rowEls.push($el);
+						}
+						else {
+							rowEls.push($el);
+							maxHeight = (maxHeight < $el.height()) ? ($el.height()) : (maxHeight);
+						}
 						for (currentEl = 0; currentEl < rowEls.length; currentEl++) {
 							rowEls[currentEl].height(maxHeight);
+							if (options.setLineHeight) {
+								rowEls[currentEl].css({
+									'line-height': maxHeight - 4 + 'px'
+								})
+							};
 						}
-						rowEls.length = 0;
-						currentRowStart = topPostion;
-						maxHeight = $el.height();
-						rowEls.push($el);
-					}
-					else {
-						rowEls.push($el);
-						maxHeight = (maxHeight < $el.height()) ? ($el.height()) : (maxHeight);
-					}
-					for (currentEl = 0; currentEl < rowEls.length; currentEl++) {
-						rowEls[currentEl].height(maxHeight);
-						if (options.setLineHeight) {
-							rowEls[currentEl].css({
-								'line-height': maxHeight - 4 + 'px'
-							})
-						};
-					}
+					};
 				});
 
 				return this;

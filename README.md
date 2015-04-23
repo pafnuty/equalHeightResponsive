@@ -17,36 +17,44 @@ jQuery-плагин для выравнивания высоты блоков н
 Использование
 -------------
 HTML:
-~~~~ html
+``` html
 <div class="container">
     <div class="element"></div>
     <div class="element"></div>
     <div class="element"></div>
     <div class="element"></div>
 </div>
-~~~~
+```
 
 js:
-~~~~ javascript
+``` javascript
 jQuery(document).ready(function($) {
     $('.element').equalHeightResponsive();
 });
-~~~~
+```
 
 
 Для повторной инициализации делаем так (более правильный вариант):
-~~~~ javascript
+``` javascript
 $('.element').equalHeightResponsive('refresh');
-~~~~
+```
 или так:
-~~~~ javascript
+``` javascript
 $('.element').trigger('equal-refresh');
-~~~~
+```
 
-Можно устанавливать обрабатываемым блокам свойство line-height, равное (высота - 4px), для этого нужно "активировать" опцию setLineHeight, вот так:
-~~~~ javascript
-$('.element').equalHeightResponsive({setLineHeight : true});
-~~~~
+Можно устанавливать обрабатываемым блокам свойство line-height (= высоте блока), для этого нужно "активировать" опцию setLineHeight, вот так:
+``` javascript
+$('.element').equalHeightResponsive({setLineHeight: true});
+```
+
+Можно менять line-height вот так (по умолчанию -4):
+``` javascript
+$('.element').equalHeightResponsive({
+    setLineHeight: true,
+    lineHeightOffset: 0
+});
+```
 
 
 Демо

@@ -1,6 +1,6 @@
 /**
  * Плагин     : jQuery.equalHeightResponsive
- * Версия     : 1.3 (19.03.2015)
+ * Версия     : 1.4 (23.04.2015)
  * Репозиторий: http://git.io/OwM7Ow
  * Автор      : ПафНутиЙ
  * Twitter    : @pafnuty_name
@@ -32,42 +32,61 @@
  * или
  * $('.element').trigger('equal-refresh');
  *
- * Так же возможно устанавливать обрабатываемым блокам свойство line-height, равное (высота - 4px),
- * для этого нужно "активировать" опцию setLineHeight, вот так:
- * $('.element').equalHeightResponsive({setLineHeight : true});
+ * Так же возможно устанавливать обрабатываемым блокам свойство line-height, равное высоте.
+ * Предусмотрена возможность влиять на line-height (иногда нужно на её уменьшить/увеличить.)
+ * Для этого нужно "активировать" опцию setLineHeight, вот так:
+ * $('.element').equalHeightResponsive({
+ *     setLineHeight : true,
+ *     lineHeightOffset: 0
+ * });
  *
  *
  */
 
-
-;(function ($, window, document, undefined) {
-
+;
+(function ($, window, document, undefined) {
+	'use strict';
 	var maxHeight = 0,
 		currentRowStart = 0,
-		rowEls = new Array(),
+		rowEls = [],
+		topPostion = 0,
 		$el,
-		topPosition = 0,
+		currentEl,
 		defaults = {
-			setLineHeight: false
+			setLineHeight: false,
+			lineHeightOffset: -4
 		},
 		methods = {
 			init: function (options) {
 
 				var props = $.extend({}, defaults, options),
 					_this = this,
-					_run = function () {
-						methods.run(_this, props);
+					$window = $(window),
+					winWidth = $window.width(), // IE8 loop resize fix
+					winHeight = $window.height(), // IE8 loop resize fix
+					_run = function (e) {
+						var winNewWidth = $window.width(), // IE8 loop resize fix
+							winNewHeight = $window.height(); // IE8 loop resize fix
+
+						// IE8 loop resize fix
+						if ((winWidth != winNewWidth || winHeight != winNewHeight) || e.type == 'load') {
+							methods.run(_this, props);
+						}
+						// IE8 loop resize fix
+						winWidth = winNewWidth;
+						winHeight = winNewHeight;
 					};
 
-				$(window).on('load.equalHeightResponsive resize.equalHeightResponsive equal-refresh.equalHeightResponsive', _this, _run);
+				$window.on('load.equalHeightResponsive resize.equalHeightResponsive equal-refresh.equalHeightResponsive', _this, _run);
 
 				return this;
 
 			},
 			run: function (elements, options) {
+
 				$.each(elements, function () {
 					$el = $(this);
-					$($el).height('auto')
+					$($el).height('auto');
 					topPostion = $el.offset().top;
 					if ($el.is(':visible')) {
 						if (currentRowStart != topPostion) {
@@ -87,11 +106,11 @@
 							rowEls[currentEl].height(maxHeight);
 							if (options.setLineHeight) {
 								rowEls[currentEl].css({
-									'line-height': maxHeight - 4 + 'px'
-								})
-							};
+									'line-height': maxHeight + options.lineHeightOffset + 'px'
+								});
+							}
 						}
-					};
+					}
 				});
 
 				return this;

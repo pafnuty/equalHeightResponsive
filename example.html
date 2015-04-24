@@ -159,10 +159,10 @@
 	<!-- scripts -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script>
+		/*! jQuery.equalHeightResponsive | v.1.6 | 24.04.2015 | http://git.io/OwM7Ow */
+		!function(e,t,i,h){"use strict";var n,s,r=0,u=0,o=[],g=0,a={setLineHeight:!1,lineHeightOffset:-4},f={init:function(i){var n=e.extend({},a,i),s=this,r=e(t),u=r.width(),o=r.height(),g=function(e){var t=r.width(),i=r.height();(u!=t||o!=i||"load"==e.type||"equal-refresh"==e.type)&&f.run(s,n),u=t,o=i};return r.on("load.equalHeightResponsive resize.equalHeightResponsive equal-refresh.equalHeightResponsive",s,g),t.frameCacheVars!==h&&f.run(s,n),this},run:function(t,i){return e.each(t,function(){if(n=e(this),e(n).height("auto"),g=n.offset().top,n.is(":visible")){if(u!=g){for(s=0;s<o.length;s++)o[s].height(r);o.length=0,u=g,r=n.height(),o.push(n)}else o.push(n),r=r<n.height()?n.height():r;for(s=0;s<o.length;s++)o[s].height(r),i.setLineHeight&&o[s].css({"line-height":r+i.lineHeightOffset+"px"})}}),this},refresh:function(){return e(t).trigger("equal-refresh.equalHeightResponsive"),this}};e.fn.equalHeightResponsive=function(t){return f[t]?f[t].apply(this,Array.prototype.slice.call(arguments,1)):"object"!=typeof t&&t?void e.error("Метод с именем "+t+" не существует для jQuery.equalHeightResponsive"):f.init.apply(this,arguments)}}(jQuery,window,document);
+		
 		jQuery(document).ready(function ($) {
-			/*! jQuery.equalHeightResponsive | v.1.5 | 24.04.2015 | http://git.io/OwM7Ow */
-			!function(e,t,i,h){"use strict";var n,s,r=0,o=0,u=[],g=0,l={setLineHeight:!1,lineHeightOffset:-4},a={init:function(i){var n=e.extend({},l,i),s=this,r=e(t),o=r.width(),u=r.height(),g=function(e){var t=r.width(),i=r.height();(o!=t||u!=i||"load"==e.type)&&a.run(s,n),o=t,u=i};return r.on("load.equalHeightResponsive resize.equalHeightResponsive equal-refresh.equalHeightResponsive",s,g),t.frameCacheVars!==h&&(a.run(s,n),console.log("equalHeightResponsive: composite load")),this},run:function(t,i){return e.each(t,function(){if(n=e(this),e(n).height("auto"),g=n.offset().top,n.is(":visible")){if(o!=g){for(s=0;s<u.length;s++)u[s].height(r);u.length=0,o=g,r=n.height(),u.push(n)}else u.push(n),r=r<n.height()?n.height():r;for(s=0;s<u.length;s++)u[s].height(r),i.setLineHeight&&u[s].css({"line-height":r+i.lineHeightOffset+"px"})}}),this},refresh:function(){return e(t).trigger("equal-refresh.equalHeightResponsive"),console.log("refresh"),this}};e.fn.equalHeightResponsive=function(t){return a[t]?a[t].apply(this,Array.prototype.slice.call(arguments,1)):"object"!=typeof t&&t?void e.error("Метод с именем "+t+" не существует для jQuery.equalHeightResponsive"):a.init.apply(this,arguments)}}(jQuery,window,document);
-
 			$('.element').equalHeightResponsive();
 		});
 

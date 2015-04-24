@@ -1,6 +1,8 @@
+
+/*! jQuery.equalHeightResponsive | v.1.5 | 24.04.2015 | http://git.io/OwM7Ow */
 /**
  * Плагин     : jQuery.equalHeightResponsive
- * Версия     : 1.4 (23.04.2015)
+ * Версия     : 1.5 (24.04.2015)
  * Репозиторий: http://git.io/OwM7Ow
  * Автор      : ПафНутиЙ
  * Twitter    : @pafnuty_name
@@ -43,6 +45,7 @@
  *
  */
 
+
 ;
 (function ($, window, document, undefined) {
 	'use strict';
@@ -67,7 +70,6 @@
 					_run = function (e) {
 						var winNewWidth = $window.width(), // IE8 loop resize fix
 							winNewHeight = $window.height(); // IE8 loop resize fix
-
 						// IE8 loop resize fix
 						if ((winWidth != winNewWidth || winHeight != winNewHeight) || e.type == 'load') {
 							methods.run(_this, props);
@@ -78,6 +80,12 @@
 					};
 
 				$window.on('load.equalHeightResponsive resize.equalHeightResponsive equal-refresh.equalHeightResponsive', _this, _run);
+
+				// Bitrix composite fix
+				if (window.frameCacheVars !== undefined) {
+					methods.run(_this, props);
+					console.log('equalHeightResponsive: composite load');
+				};
 
 				return this;
 
@@ -117,7 +125,7 @@
 			},
 			refresh: function () {
 				$(window).trigger('equal-refresh.equalHeightResponsive');
-
+				console.log('refresh');
 				return this;
 			}
 		};
